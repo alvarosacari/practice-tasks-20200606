@@ -30,8 +30,7 @@ export default {
           to: { name: 'index' }
         },
         {
-          text: 'Usuarios',
-          to: { name: 'users' }
+          text: 'Usuarios'
         }
       ]
     }

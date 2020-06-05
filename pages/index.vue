@@ -30,8 +30,7 @@ export default {
     return {
       breadcrumbs: [
         {
-          text: 'Inicio',
-          to: { name: 'index' }
+          text: 'Inicio'
         }
       ]
     }
