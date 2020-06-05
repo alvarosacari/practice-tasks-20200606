@@ -14,9 +14,12 @@
     />
     <v-text-field
       v-model="password"
+      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+      :type="showPassword ? 'text' : 'password'"
       outlined
       :rules="rules.password"
       label="Contraseña"
+      @click:append="showPassword = !showPassword"
     />
 
     <v-btn :disabled="!valid" color="success" class="mt-1" type="submit">
@@ -37,8 +40,9 @@ const AT_LEAST_ONE_UPPERCASE_REGEX = /[A-Z]/
 export default {
   data: () => ({
     valid: true,
-    email: 'admin@admin.com',
-    password: '!Admin123@test',
+    email: '',
+    password: '',
+    showPassword: false,
     rules: {
       email: [
         v => !!v || 'El correo electrónico es requerido',
@@ -75,10 +79,10 @@ export default {
 
       try {
         await this.authLogin({ email, password })
+        this.$snackbar.success('Bienvenido Administrador')
         this.$router.push({ name: 'index' })
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('login error', error)
+        this.$snackbar.error(error)
       }
     }
   }

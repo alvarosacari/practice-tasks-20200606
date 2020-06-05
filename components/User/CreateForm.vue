@@ -35,7 +35,12 @@
       hint="dd/mm/aaaa"
     />
 
-    <v-radio-group v-model="form.gender" row :rules="rules.gender">
+    <v-radio-group
+      v-model="form.gender"
+      row
+      :rules="rules.gender"
+      class="mt-0 pt-0"
+    >
       <template v-slot:label>
         <div>Sexo</div>
       </template>
@@ -79,9 +84,7 @@ export default {
       ],
       birthdate: [
         v => !!v || 'La fecha de cumpleaños es requerida',
-        v =>
-          v.length >= 10 ||
-          'La fecha de nacimiento no es válida'
+        v => v.length >= 10 || 'La fecha de nacimiento no es válida'
       ],
       gender: [v => !!v || 'El sexo es requerido']
     }
@@ -100,6 +103,7 @@ export default {
 
       const { form: user } = this
       this.addUser({ user })
+      this.$snackbar.success('El usuario ha sido creado correctamente')
       this.$router.push({ name: 'users' })
     }
   }

@@ -10,14 +10,14 @@
       <v-img
         v-if="isAuthenticated"
         :aspect-ratio="16 / 9"
-        src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+        :src="require('~/assets/images/material.jpg')"
       >
         <v-row align="end" class="lightbox fill-height">
           <v-col class="pb-0">
             <v-list dark class="pa-0" dense>
               <v-list-item two-line>
                 <v-list-item-avatar color="primary" class="mr-4">
-                  <v-img src="https://randomuser.me/api/portraits/men/81.jpg" />
+                  <v-img :src="require('~/assets/images/face.jpg')" />
                 </v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title v-text="user.name" />
@@ -62,13 +62,18 @@
     <v-content>
       <nuxt />
     </v-content>
+    <Snackbar />
   </v-app>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import Snackbar from '~/components/Snackbar'
 
 export default {
+  components: {
+    Snackbar
+  },
   data () {
     return {
       clipped: false,

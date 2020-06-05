@@ -5,7 +5,16 @@
         <nuxt />
       </v-container>
     </v-content>
+    <Snackbar />
   </v-app>
 </template>
 
-<script></script>
+<script>
+import Snackbar from '~/components/Snackbar'
+
+export default {
+  components: {
+    Snackbar
+  }
+}
+</script>

@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import en from 'vuetify/lib/locale/en'
+import es from 'vuetify/lib/locale/es'
 
 export default {
   mode: 'spa',
@@ -33,7 +35,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/VMask.js'
+    '~/plugins/VMask.js',
+    '~/plugins/snackbar.js'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -89,6 +92,10 @@ export default {
           error: colors.red,
           success: colors.green
         }
+      },
+      lang: {
+        locales: { es, en },
+        current: 'es'
       }
     }
   },
