@@ -7,6 +7,27 @@
       fixed
       app
     >
+      <v-img
+        v-if="isAuthenticated"
+        :aspect-ratio="16 / 9"
+        src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+      >
+        <v-row align="end" class="lightbox fill-height">
+          <v-col class="pb-0">
+            <v-list dark class="pa-0" dense>
+              <v-list-item two-line>
+                <v-list-item-avatar color="primary" class="mr-4">
+                  <v-img src="https://randomuser.me/api/portraits/men/81.jpg" />
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title v-text="user.name" />
+                  <v-list-item-subtitle v-text="user.email" />
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-col>
+        </v-row>
+      </v-img>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -22,73 +43,31 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
+        <v-divider />
+        <v-list-item @click="logout()">
           <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+            <v-icon>mdi-power</v-icon>
           </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+          <v-list-item-content>
+            <v-list-item-title v-text="'Cerrar sesión'" />
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    <v-app-bar :clipped-left="clipped" fixed app>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title v-text="title" />
+      <v-spacer />
+    </v-app-bar>
+    <v-content>
+      <nuxt />
+    </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -97,16 +76,48 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-home',
+          title: 'Dashboard',
           to: '/'
+        },
+        {
+          icon: 'mdi-account-group',
+          title: 'Usuarios',
+          to: '/users'
         }
       ],
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Practice Work 2020-06-06'
+    }
+  },
+
+  computed: {
+    ...mapState({
+      user: state => state.auth.user,
+      isAuthenticated: state => state.auth.isAuthenticated
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      authLogout: 'auth/logout'
+    }),
+
+    logout () {
+      this.authLogout()
+      this.$router.push({ name: 'login' })
     }
   }
 }
 </script>
+
+<style scoped>
+.lightbox {
+  box-shadow: 0 0 20px inset rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 72px
+  );
+}
+</style>
