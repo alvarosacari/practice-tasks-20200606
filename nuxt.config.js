@@ -69,9 +69,18 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+      dark: true,
       themes: {
         light: {
+          primary: colors.indigo,
+          secondary: colors.blue,
+          accent: colors.pink,
+          info: colors.lightBlue,
+          warning: colors.amber,
+          error: colors.red,
+          success: colors.green
+        },
+        dark: {
           primary: colors.indigo,
           secondary: colors.blue,
           accent: colors.pink,
