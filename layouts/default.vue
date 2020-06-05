@@ -110,6 +110,7 @@ export default {
 
     logout () {
       this.authLogout()
+      this.$snackbar.success('Hasta pronto!')
       this.$router.push({ name: 'login' })
     }
   }

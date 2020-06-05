@@ -9,7 +9,7 @@ export const state = () => ({
   text: '',
   color: 'success',
   icon: 'mdi-information-outline',
-  timeout: 6000
+  timeout: 3000
 })
 
 export const actions = {
