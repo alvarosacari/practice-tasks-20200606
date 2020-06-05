@@ -9,12 +9,14 @@
   >
     <v-text-field
       v-model="form.fullname"
+      autocomplete="none"
       outlined
       :rules="rules.fullname"
       label="Nombres y apellidos"
     />
     <v-text-field
       v-model="form.email"
+      autocomplete="none"
       outlined
       :rules="rules.email"
       label="Correo electrónico"
@@ -22,6 +24,7 @@
     <v-text-field
       v-model="form.phoneNumber"
       v-mask="'(+##)#########'"
+      autocomplete="none"
       outlined
       :rules="rules.phoneNumber"
       label="Número de teléfono"
@@ -29,6 +32,7 @@
     <v-text-field
       v-model="form.birthdate"
       v-mask="'##/##/####'"
+      autocomplete="none"
       outlined
       :rules="rules.birthdate"
       label="Fecha de nacimiento"

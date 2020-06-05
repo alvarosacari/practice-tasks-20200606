@@ -8,6 +8,7 @@
   >
     <v-text-field
       v-model="email"
+      autocomplete="none"
       autofocus
       outlined
       :rules="rules.email"
@@ -15,6 +16,7 @@
     />
     <v-text-field
       v-model="password"
+      autocomplete="none"
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       :type="showPassword ? 'text' : 'password'"
       outlined
