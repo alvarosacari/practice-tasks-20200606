@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from 'vuetify/lib/util/colors'
 import en from 'vuetify/lib/locale/en'
 import es from 'vuetify/lib/locale/es'
 
@@ -70,6 +70,7 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
+    treeShake: true,
     customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: true,
@@ -92,11 +93,11 @@ export default {
           error: colors.red,
           success: colors.green
         }
-      },
-      lang: {
-        locales: { es, en },
-        current: 'es'
       }
+    },
+    lang: {
+      locales: { es, en },
+      current: 'es'
     }
   },
   /*
