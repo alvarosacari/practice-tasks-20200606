@@ -2,6 +2,7 @@
   <v-form
     ref="form"
     v-model="valid"
+    autocomplete="off"
     lazy-validation
     @submit.prevent="submitForm()"
   >
