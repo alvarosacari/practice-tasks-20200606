@@ -18,7 +18,7 @@ export const actions = {
     commit('ADD_USER', payload)
   },
 
-  replaceShowNavigationDrawer ({ commit }, payload) {
+  updateUser ({ commit }, payload) {
     commit('UPDATE_USER', payload)
   }
 }
@@ -30,7 +30,8 @@ export const mutations = {
     state.users.push(user)
   },
 
-  [UPDATE_USER] (state, { show }) {
-    state.showDrawer = show
+  [UPDATE_USER] (state, { user }) {
+    const index = state.users.findIndex(item => item.id === user.id)
+    state.users[index] = user
   }
 }
