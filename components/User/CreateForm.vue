@@ -25,7 +25,6 @@
     <v-text-field
       v-model="form.phoneNumber"
       v-mask="'(+##)#########'"
-      autocomplete="none"
       outlined
       :rules="rules.phoneNumber"
       label="Número de teléfono"
@@ -33,7 +32,6 @@
     <v-text-field
       v-model="form.birthdate"
       v-mask="'##/##/####'"
-      autocomplete="none"
       outlined
       :rules="rules.birthdate"
       label="Fecha de nacimiento"
