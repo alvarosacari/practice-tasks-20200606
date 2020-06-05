@@ -9,6 +9,11 @@
       <h1 class="headline mt-2 mb-6">
         Inciar sesión
       </h1>
+      <v-alert type="info" class="text-left mb-8" border="left" :icon="false">
+        <div><strong>Usuario demo:</strong></div>
+        <div>Correo electrónico: admin@admin.com</div>
+        <div>Contraseña: !Admin123@test</div>
+      </v-alert>
       <loginForm />
       <div class="mt-2 text--secondary">
         <v-btn
