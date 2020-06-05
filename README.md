@@ -2,6 +2,8 @@
 
 > practice-tasks-20200606
 
+![demo.gif](https://raw.githubusercontent.com/alvarosacari/practice-tasks-20200606/master/static/demo.gif)
+
 ## Build Setup
 
 ```bash
