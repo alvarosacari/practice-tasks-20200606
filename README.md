@@ -4,6 +4,10 @@
 
 ![demo.gif](https://raw.githubusercontent.com/alvarosacari/practice-tasks-20200606/master/static/demo.gif)
 
+## Demo
+
+[https://practice-tasks-20200606.netlify.app](https://practice-tasks-20200606.netlify.app)
+
 ## Build Setup
 
 ```bash
